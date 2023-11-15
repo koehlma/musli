@@ -17,7 +17,7 @@ use core::{fmt, marker};
 
 use crate::de::{Decode, Decoder, ValueVisitor, VariantDecoder};
 use crate::en::{Encode, Encoder, VariantEncoder};
-use crate::mode::Mode;
+use crate::mode::{Mode, StandardMode};
 use crate::Context;
 
 impl<M> Encode<M> for ()
@@ -440,7 +440,7 @@ where
 
 impl<T, U, M> Encode<M> for Result<T, U>
 where
-    M: Mode,
+    M: StandardMode,
     T: Encode<M>,
     U: Encode<M>,
 {
@@ -461,7 +461,7 @@ where
 
 impl<'de, M, T, U> Decode<'de, M> for Result<T, U>
 where
-    M: Mode,
+    M: StandardMode,
     T: Decode<'de, M>,
     U: Decode<'de, M>,
 {

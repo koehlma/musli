@@ -7,11 +7,11 @@ use rand::prelude::*;
 // M marker indicating that some attributes should only apply when we're
 // decoding in a JSON mode.
 mod my_modes {
-    use musli::mode::Mode;
+    use musli::mode::StandardMode;
 
     pub(crate) enum Json {}
 
-    impl Mode for Json {}
+    impl StandardMode for Json {}
 }
 
 const CONFIG: Encoding<my_modes::Json> = Encoding::new().with_mode();
